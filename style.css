@@ -22,7 +22,7 @@ body {
     position: relative;
     background-position: center center;
     background-size: cover;
-    z-index: -1;
+    transition: 1s ease;
 }
 
 .icon {
@@ -30,19 +30,11 @@ body {
     font-size: 2rem;
     padding: 1rem;
     color: white;
-    transform: translateY(-50%);
 }
 
-.inside {
-    position: absolute;
-    top: 10vh;
-    left: 7.5vh;
-    border: 1px solid red;
-    background-position: center center;
-    background-color: red;
-    width: 80%;
-    height: 80vh;
-    background-size: cover;
+.icon:hover {
+    cursor: pointer;
+    transform: scale(0.9);
 }
 
 .left {

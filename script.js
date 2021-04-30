@@ -17,23 +17,42 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 
 //Setting a random image as first
-currentImageIndex = Math.floor(Math.random() / images.length);
+currentImageIndex = Math.floor(Math.random() * images.length);
 setupImage(getImageURL(currentImageIndex));
 
 function setupImage(image) {
-    container.style.backgroundImage = `url(${images})`;
-    inside.style.backgroundImage = `url(${images})`;
+    container.style.backgroundImage = `url(${image})`;
 }
 
+//Move a image index back when use clicks left arrow
 left.addEventListener("click", () => {
-    currentImageIndex--;
-    setupImage(getImageURL(currentImageIndex));
+    setupImage(getImageURL(currentImageIndex - 1));
+    console.log(currentImageIndex - 1);
 });
 
+//Move a image index back when use clicks left arrow
+right.addEventListener("click", () => {
+    currentImageIndex++;
+    setupImage(getImageURL(currentImageIndex + 1));
+});
+
+/**
+ * This function will return a image URL for index position passed as argument
+ * @author Jeeva Kalaiselvam
+ * @param {Number} position - This number represents the position of image in index
+ * @returns
+ */
 function getImageURL(position) {
+    console.log(position);
+    //Check if position is valid, Otherwise loop around the array boundary
     if (position < 0) {
-        return images[image.length - 1];
+        currentImageIndex = images.length - 1;
+        return images[images.length - 1];
+    } else if (position > images.length - 1) {
+        currentImageIndex = 0;
+        return images[0];
     } else {
+        currentImageIndex = position;
         return images[position];
     }
 }
